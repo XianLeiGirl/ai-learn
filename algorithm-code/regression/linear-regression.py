@@ -25,6 +25,18 @@ model = tf.keras.Sequential([
     tf.keras.layers.Dense(1, input_shape=(X_train.shape[1],))
 ])
 
+## 创建带有 L1 正则化(Lasso 回归)的线性回归模型
+# model = tf.keras.Sequential([
+#     tf.keras.layers.Dense(1, input_shape=(X_train.shape[1],),
+#                           kernel_regularizer=tf.keras.regularizers.l1(alpha))
+# ])
+
+## 创建带有 L2 正则化(岭回归)的线性回归模型
+# model = tf.keras.Sequential([
+#     tf.keras.layers.Dense(1, input_shape=(X_train.shape[1],),
+#                           kernel_regularizer=tf.keras.regularizers.l2(alpha))
+# ])
+
 # 编译模型
 model.compile(optimizer='adam', loss='mse')
 
