@@ -24,7 +24,7 @@ for dirname, _, filenames in os.walk(data_dir):
                 lines = doc.split('\n')
                 wiki_id = lines[0].split('"')[1]
                 title = lines[0].split('title="')[1].split('"')[0]
-                paragraphs = lines[1:len(lines)]
+                paragraphs = lines[1:len(lines)-1]
                 for paragraph in paragraphs:
                     paragraph = paragraph.strip()
                     if paragraph:
@@ -37,6 +37,6 @@ for dirname, _, filenames in os.walk(data_dir):
 
 
         df = pd.DataFrame(data)
-        df.to_parquet(f'wiki/wiki_{index:05}.parquet', engine='pyarrow')
+        df.to_parquet(f'wiki/wiki_{index:05}.parquet', engine='pyarrow', index=False)
 
         index += 1             
