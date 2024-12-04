@@ -24,14 +24,14 @@ for dirname, _, filenames in os.walk(data_dir):
                 lines = doc.split('\n')
                 wiki_id = lines[0].split('"')[1]
                 title = lines[0].split('title="')[1].split('"')[0]
-                paragraphs = lines[1:len(lines)-1]
+                paragraphs = lines[1:-2] # 最后2位：</doc> ' '
                 for paragraph in paragraphs:
                     paragraph = paragraph.strip()
                     if paragraph:
                         data.append({
                             'wiki_id': wiki_id,
                             'title': title,
-                            'content': paragraph,
+                            'text': paragraph,
                             'char_count': len(paragraph)
                         })
 
